@@ -5,7 +5,8 @@ from django.dispatch import receiver
 
 
 class Petiano(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	nome = models.CharField(max_length=255)
+	email = models.CharField(max_length=255)
 	pet_extenso = models.CharField(max_length=100)
 	pet_sigla = models.CharField(max_length=25)
 
@@ -13,7 +14,7 @@ class Petiano(models.Model):
 		ordering = ['pet_sigla']
 
 	def __str__(self):
-		return str(self.user) + " " + str(self.pet_sigla)
+		return str(self.nome) + " " + str(self.pet_sigla)
 
 
 @receiver(post_save, sender=User)

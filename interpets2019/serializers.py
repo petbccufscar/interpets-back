@@ -4,11 +4,10 @@ from interpets2019.models import Petiano
 
 
 class PetianoSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(view_name='user-detail', read_only=True)
 
     class Meta:
         model = Petiano
-        fields = ('user', 'pet_sigla', 'pet_extenso')
+        fields = ('nome', 'email', 'pet_sigla', 'pet_extenso')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
