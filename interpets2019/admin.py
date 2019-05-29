@@ -1,3 +1,4 @@
 from django.contrib import admin
+from interpets2019.models import Petiano
 
-# Register your models here.
+admin.site.register(Petiano)
