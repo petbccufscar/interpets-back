@@ -10,7 +10,7 @@ class Petiano(models.Model):
     telefone = models.CharField(max_length=255, unique=False)
     restricao_alimentar = models.CharField(max_length=255, unique=False, default='Nenhuma', choices=TIPOS)
     pet = models.CharField(max_length=25, null=False, default='')
-    oficina = models.BooleanField(default=False)
+    oficina = models.BooleanField(default=False, null=True)
 
     class Meta:
         ordering = ['pet']
