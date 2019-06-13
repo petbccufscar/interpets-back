@@ -3,6 +3,17 @@ from django.contrib.auth.models import User
 
 TIPOS = [('Vegetariano', 'Vegetariano'), ('Vegano', 'Vegano'), ('Nenhuma', 'Nenhuma')]
 
+class Oficina(models.model):
+    nome = models.CharField(max_length=255, null=False, default='')
+    qtde_vagas = models.IntegerField(null = True)
+
+    class Meta:
+        ordering = ['nome']
+
+    def __str__(self):
+        return str(self.nome)
+
+
 class Petiano(models.Model):
     nome = models.CharField(max_length=255, null=False, default='')
     email = models.CharField(max_length=255, unique=True, default='')
@@ -29,13 +40,3 @@ class Petiano(models.Model):
         except:
             pass
         super().save(*args, **kwargs)  # Call the "real" save() method.
-
-class Oficina(models.model):
-    nome = models.CharField(max_length=255, null=False, default='')
-    qtde_vagas = models.IntegerField(null = True)
-
-    class Meta:
-        ordering = ['nome']
-
-    def __str__(self):
-        return str(self.nome)
