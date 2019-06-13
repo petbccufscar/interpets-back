@@ -2,7 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 TIPOS = [('Vegetariano', 'Vegetariano'), ('Vegano', 'Vegano'), ('Nenhuma', 'Nenhuma')]
-
+PETS = [('PET Ambiental', 'PET Ambiental'),
+        ('PET BCI', 'PET BCI'),
+        ('PET Biologia', 'PET Biologia'),
+        ('PET Civil', 'PET Civil'),
+        ('PET EQ', 'PET EQ'),
+        ('PET EcoSol', 'PET EcoSol'),
+        ('PET Estatistica', 'PET Estatistica'),
+        ('PET Indígena', 'PET Indígena'),
+        ('PET LiF', 'PET LiF'),
+        ('PET Matemática','PET Matemática' ),
+        ('PET Química', 'PET Química'),
+        ('PET Usina de Reflexão', 'PET Usina de Reflexão'),
+        ('PET BCC', 'PET BCC')
+        ('PET Saúde', 'PET Saúde')]
 
 class Petiano(models.Model):
     nome = models.CharField(max_length=255, null=False, default='')
