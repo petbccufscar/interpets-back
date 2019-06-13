@@ -11,6 +11,9 @@ class Petiano(models.Model):
     restricao_alimentar = models.CharField(max_length=255, unique=False, default='Nenhuma', choices=TIPOS)
     pet = models.CharField(max_length=25, null=False, default='')
     oficina = models.BooleanField(default=False, null=True)
+    credenciado = models.BooleanField(default=False)
+    pagou = models.BooleanField(default=False)
+    dinamica = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['pet']
