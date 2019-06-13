@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 TIPOS = [('Vegetariano', 'Vegetariano'), ('Vegano', 'Vegano'), ('Nenhuma', 'Nenhuma')]
 
-class Oficina(models.model):
+class Oficina(models.Model):
     nome = models.CharField(max_length=255, null=False, default='')
     qtde_vagas = models.IntegerField(null = True)
 
