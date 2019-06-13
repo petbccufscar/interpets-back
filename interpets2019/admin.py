@@ -16,7 +16,7 @@ credencia.short_description = 'Credenciar petiano(s)'
 # admin.site.register(Petiano)
 @admin.register(Petiano)
 class PetianoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'pet', 'restricao_alimentar', 'oficina', 'pagou', 'credenciado')
-    list_filter = ('restricao_alimentar', 'oficina', 'pet', 'pagou', 'credenciado')
+    list_display = ('nome', 'pet', 'pagou', 'credenciado', 'oficina', 'dinamica')
+    list_filter = ('pet', 'oficina', 'pagou', 'dinamica','credenciado', 'restricao_alimentar')
     search_fields = ['nome']
     actions = [confirma_pagamento, credencia]
