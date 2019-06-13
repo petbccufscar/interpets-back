@@ -1,5 +1,5 @@
 from django.contrib import admin
-from interpets2019.models import Petiano
+from interpets2019.models import Petiano, Oficina
 
 def confirma_pagamento(modeladmin, request, queryset):
     for petiano in queryset:
@@ -20,3 +20,7 @@ class PetianoAdmin(admin.ModelAdmin):
     list_filter = ('pet', 'oficina', 'pagou', 'dinamica','credenciado', 'restricao_alimentar')
     search_fields = ['nome']
     actions = [confirma_pagamento, credencia]
+
+@admin.register(Oficina)
+class OficinaAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'qtde_vagas')

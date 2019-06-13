@@ -13,9 +13,29 @@ class Petiano(models.Model):
     credenciado = models.BooleanField(default=False)
     pagou = models.BooleanField(default=False)
     dinamica = models.BooleanField(default=False)
-
+    oficina_pk = models.ForeignKey(Oficina, null = True, on_delete=models.SET_NULL)
     class Meta:
         ordering = ['pet']
 
     def __str__(self):
         return str(self.pet) + ' ' + str(self.nome)
+
+    def save(self, *args, **kwargs):
+        try:
+            if self.oficina_pk.qtde_vagas > 0:
+                self.oficina_pk.qtde_vagas -= 1
+            else:
+                 raise forms.ValidationError("Oficina cheia")
+        except:
+            pass
+        super().save(*args, **kwargs)  # Call the "real" save() method.
+
+class Oficina(models.model):
+    nome = models.CharField(max_length=255, null=False, default='')
+    qtde_vagas = models.IntegerField(null = True)
+
+    class Meta:
+        ordering = ['nome']
+
+    def __str__(self):
+        return str(self.nome)
