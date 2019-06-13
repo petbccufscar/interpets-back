@@ -12,4 +12,5 @@ confirma_pagamento.short_description = 'Confirma Pagamento'
 class PetianoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'pet', 'restricao_alimentar', 'oficina', 'pagou', 'credenciado')
     list_filter = ('restricao_alimentar', 'oficina', 'pet', 'pagou', 'credenciado')
+    search_fields = ('nome')
     actions = [confirma_pagamento, ]
