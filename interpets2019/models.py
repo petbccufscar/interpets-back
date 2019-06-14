@@ -25,6 +25,7 @@ class Petiano(models.Model):
     pagou = models.BooleanField(default=False)
     dinamica = models.BooleanField(default=False)
     oficina_pk = models.ForeignKey(Oficina, null = True, on_delete=models.SET_NULL)
+    grupo_dinamica = models.IntegerField(null = True, default = 0)
     class Meta:
         ordering = ['pet']
 
@@ -35,6 +36,7 @@ class Petiano(models.Model):
         try:
             if self.oficina_pk.qtde_vagas > 0:
                 self.oficina_pk.qtde_vagas -= 1
+                self.oficina_pk.save()
             else:
                  raise forms.ValidationError("Oficina cheia")
         except:
