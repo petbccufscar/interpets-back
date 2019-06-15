@@ -15,19 +15,24 @@ def credencia(modeladmin, request, queryset):
 credencia.short_description = 'Credenciar petiano(s)'
 
 def sorteia_dinamicas(modeladmin, request, queryset):
-    queryset.objects.order_by('?')
     for petiano in queryset:
         petiano.grupo_dinamica = randint(1, 8)
         petiano.save()
 sorteia_dinamicas.short_description = 'Sortear grupos de dinâmica'
 
+def reset_dinamicas(modeladmin, request, queryset):
+    for petiano in queryset:
+        petiano.grupo_dinamica = 0
+        petiano.save()
+reset_dinamicas.short_description = 'Resetar grupos de dinâmica'
+
 # admin.site.register(Petiano)
 @admin.register(Petiano)
 class PetianoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'pet', 'pagou', 'credenciado', 'oficina', 'dinamica')
-    list_filter = ('pet', 'oficina', 'pagou', 'dinamica','credenciado', 'restricao_alimentar')
+    list_display = ('nome', 'pet', 'pagou', 'credenciado', 'oficina', 'grupo_dinamica')
+    list_filter = ('pet', 'oficina', 'pagou', 'dinamica','credenciado', 'grupo_dinamica', 'restricao_alimentar')
     search_fields = ['nome']
-    actions = [confirma_pagamento, credencia, sorteia_dinamicas]
+    actions = [confirma_pagamento, credencia, sorteia_dinamicas, reset_dinamicas]
 
 @admin.register(Oficina)
 class OficinaAdmin(admin.ModelAdmin):

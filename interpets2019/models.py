@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 TIPOS = [('Vegetariano', 'Vegetariano'), ('Vegano', 'Vegano'), ('Nenhuma', 'Nenhuma')]
 
@@ -37,8 +38,10 @@ class Petiano(models.Model):
             if self.oficina_pk.qtde_vagas > 0:
                 self.oficina_pk.qtde_vagas -= 1
                 self.oficina_pk.save()
-            else:
-                 raise forms.ValidationError("Oficina cheia")
         except:
             pass
         super().save(*args, **kwargs)  # Call the "real" save() method.
+
+    def clean(self):
+        if self.oficina_pk.qtde_vagas == 0:
+            raise ValidationError("Oficina Cheia, favor escolher outra!!!!")
