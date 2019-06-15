@@ -1,6 +1,6 @@
 from django.contrib import admin
 from interpets2019.models import Petiano, Oficina
-from random import randint
+import random
 
 def confirma_pagamento(modeladmin, request, queryset):
     for petiano in queryset:
@@ -15,9 +15,18 @@ def credencia(modeladmin, request, queryset):
 credencia.short_description = 'Credenciar petiano(s)'
 
 def sorteia_dinamicas(modeladmin, request, queryset):
+    dinamica = 1
+    grupo = queryset.count() // 4
+    grupo_controle = 1
+    items = sorted(Petiano.objects.all(), key=lambda x: random.random())
     for petiano in queryset:
-        petiano.grupo_dinamica = randint(1, 8)
+        petiano.grupo_dinamica = dinamica
         petiano.save()
+        grupo_controle += 1
+        if grupo_controle >= grupo:
+                dinamica += 1
+                grupo_controle = 1
+        
 sorteia_dinamicas.short_description = 'Sortear grupos de dinâmica'
 
 def reset_dinamicas(modeladmin, request, queryset):
