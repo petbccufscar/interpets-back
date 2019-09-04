@@ -33,8 +33,6 @@ class Petiano(models.Model):
     gdt_pk = models.ForeignKey(GDT, null = True, on_delete=models.SET_NULL)
     credenciado = models.BooleanField(default=False)
     pagou = models.BooleanField(default=False)
-    oficina_pk = models.ForeignKey(Oficina, null = True, on_delete=models.SET_NULL)
-    grupo_dinamica = models.IntegerField(null = True, default = 0)
     class Meta:
         ordering = ['pet']
 
