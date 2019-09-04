@@ -1,5 +1,5 @@
 from django.contrib import admin
-from interpets2019.models import Petiano, Oficina
+from interpets2019.models import Petiano, Oficina, GDT
 import random
 
 def confirma_pagamento(modeladmin, request, queryset):
@@ -46,3 +46,7 @@ class PetianoAdmin(admin.ModelAdmin):
 @admin.register(Oficina)
 class OficinaAdmin(admin.ModelAdmin):
     list_display = ('nome', 'qtde_vagas')
+
+@admin.register(GDT)
+class GDTAdmin(admin.ModelAdmin):
+    list_display = ('nome', "qtde_vagas")

@@ -14,6 +14,15 @@ class Oficina(models.Model):
     def __str__(self):
         return str(self.nome)
 
+class GDT(models.Model):
+    nome = models.CharField(max_length=255, null=False, default='')
+    qtde_vagas = models.IntegerField(null = True)
+
+    class Meta:
+        ordering = ['nome']
+
+    def __str__(self):
+        return str(self.nome)
 
 class Petiano(models.Model):
     nome = models.CharField(max_length=255, null=False, default='')
@@ -21,10 +30,9 @@ class Petiano(models.Model):
     telefone = models.CharField(max_length=255, unique=False,null=True)
     restricao_alimentar = models.CharField(max_length=255, unique=False, default='Nenhuma', choices=TIPOS)
     pet = models.CharField(max_length=25, null=False, default='')
-    oficina = models.BooleanField(default=False, null=True)
+    gdt_pk = models.ForeignKey(GDT, null = True, on_delete=models.SET_NULL)
     credenciado = models.BooleanField(default=False)
     pagou = models.BooleanField(default=False)
-    dinamica = models.BooleanField(default=False)
     oficina_pk = models.ForeignKey(Oficina, null = True, on_delete=models.SET_NULL)
     grupo_dinamica = models.IntegerField(null = True, default = 0)
     class Meta:
@@ -35,13 +43,13 @@ class Petiano(models.Model):
 
     def save(self, *args, **kwargs):
         try:
-            if self.oficina_pk.qtde_vagas > 0:
-                self.oficina_pk.qtde_vagas -= 1
-                self.oficina_pk.save()
+            if self.gdt_pk.qtde_vagas > 0:
+                self.gdt_pk.qtde_vagas -= 1
+                self.gdt_pk.save()
         except:
             pass
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
     def clean(self):
         if self.oficina_pk.qtde_vagas == 0:
-            raise ValidationError("Oficina Cheia, favor escolher outra!!!!")
+            raise ValidationError("GDT Cheio, favor escolher outro!!!!")
