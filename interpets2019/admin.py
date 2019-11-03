@@ -20,9 +20,16 @@ def credencia(modeladmin, request, queryset):
 credencia.short_description = 'Credenciar petiano(s)'
 
 
+def confirma_e_credencia(modeladmin, request, queryset):
+    confirma_pagamento(modeladmin, request, queryset)
+    credencia(modeladmin, request, queryset)
+
+credencia.short_description = 'Confirmar pagamento e credenciar petiano(s)'
+
+
 @admin.register(Petiano)
 class PetianoAdmin(admin.ModelAdmin):
 	list_display = ('nome', 'pet', 'pagou', 'credenciado')
 	list_filter = ('pet', 'pagou', 'credenciado', 'restricao_alimentar')
 	search_fields = ['nome']
-	actions = [confirma_pagamento, credencia]
+	actions = [confirma_pagamento, credencia, confirma_e_credencia]
