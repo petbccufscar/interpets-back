@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'interpets2019.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,6 +143,10 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Interpets',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
