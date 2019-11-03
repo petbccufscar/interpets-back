@@ -21,10 +21,12 @@ credencia.short_description = 'Credenciar petiano(s)'
 
 
 def confirma_e_credencia(modeladmin, request, queryset):
-    confirma_pagamento(modeladmin, request, queryset)
-    credencia(modeladmin, request, queryset)
+	for petiano in queryset:
+		petiano.credenciado = True
+                petiano.pagou = True
+		petiano.save()
 
-credencia.short_description = 'Confirmar pagamento e credenciar petiano(s)'
+credencia_e_credencia.short_description = 'Confirmar pagamento e credenciar petiano(s)'
 
 
 @admin.register(Petiano)
