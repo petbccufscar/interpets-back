@@ -4,7 +4,8 @@ from rest_framework import routers
 from evento import views
 
 router = routers.DefaultRouter()
-router.register(r'petiano', views.PetianoViewSet)
+router.register(r'petiano', views.PetianoViewSet, basename='Petiano')
+router.register(r'gdt', views.GDTViewSet, basename='GDT')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

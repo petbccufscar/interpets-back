@@ -1,8 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from evento.models import Petiano
-from evento.serializers import PetianoSerializer
+from evento.models import *
+from evento.serializers import *
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -26,3 +26,12 @@ class PetianoViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         except:
             return Response({'error': 'usuário não cadastrado'}, status=status.HTTP_404_NOT_FOUND)
+
+class GDTViewSet(viewsets.ModelViewSet):
+    def list(self, request, ** kwargs):
+        try:
+            queryset = GDT.objects.all()
+            serializer = GDTSerializer(queryset, many=True)
+            return Response(serializer.data)
+        except:
+            return Response({'error': 'não há GDTs cadastrados'}, status=status.HTTP_404_NOT_FOUND)
