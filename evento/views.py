@@ -31,7 +31,16 @@ class GDTViewSet(viewsets.ModelViewSet):
     def list(self, request, ** kwargs):
         try:
             queryset = GDT.objects.all()
+            serializer = GDTDescSerializer(queryset, many=True)
+            return Response(serializer.data)
+        except:
+            return Response({'error': 'Não há GDTs cadastrados'}, status=status.HTTP_404_NOT_FOUND)
+
+class GDTDisponivelViewSet(viewsets.ModelViewSet):
+    def list(self, request, ** kwargs):
+        try:
+            queryset = GDT.objects.filter(quantidade_vagas__gt=0)
             serializer = GDTSerializer(queryset, many=True)
             return Response(serializer.data)
         except:
-            return Response({'error': 'não há GDTs cadastrados'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Não há GDTs disponíveis'}, status=status.HTTP_404_NOT_FOUND)

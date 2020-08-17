@@ -9,6 +9,16 @@ class PetianoSerializer(serializers.HyperlinkedModelSerializer):
         #fields = ('nome', 'email', 'telefone', 'restricao_alimentar', 'pet')
         fields = ('nome', 'email', 'telefone', 'pet')
 
-class GDTSerializer(serializers.Serializer):
-    nome = serializers.CharField(max_length=255)
-    quantidade_vagas = serializers.IntegerField()
+class GDTSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
+    class Meta:
+        model = GDT
+        fields = ('id', 'nome')
+
+class GDTDescSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
+    class Meta:
+        model = GDT
+        fields = ('id', 'nome', 'descricao', 'quantidade_vagas')

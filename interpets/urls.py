@@ -6,6 +6,7 @@ from evento import views
 router = routers.DefaultRouter()
 router.register(r'petiano', views.PetianoViewSet, basename='Petiano')
 router.register(r'gdt', views.GDTViewSet, basename='GDT')
+router.register(r'gdt_disp', views.GDTDisponivelViewSet, basename='GDT_disp')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
