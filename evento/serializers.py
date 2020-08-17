@@ -3,11 +3,12 @@ from evento.models import *
 
 
 class PetianoSerializer(serializers.HyperlinkedModelSerializer):
+    gdt = serializers.StringRelatedField()
 
     class Meta:
         model = Petiano
         #fields = ('nome', 'email', 'telefone', 'restricao_alimentar', 'pet')
-        fields = ('nome', 'email', 'telefone', 'pet')
+        fields = ('nome', 'email', 'telefone', 'pet', 'gdt')
 
 class GDTSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.ReadOnlyField()
