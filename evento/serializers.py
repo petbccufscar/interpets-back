@@ -6,4 +6,5 @@ class PetianoSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Petiano
-        fields = ('nome', 'email', 'telefone', 'restricao_alimentar', 'pet')
+        #fields = ('nome', 'email', 'telefone', 'restricao_alimentar', 'pet')
+        fields = ('nome', 'email', 'telefone', 'pet')

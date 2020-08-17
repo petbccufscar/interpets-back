@@ -3,6 +3,7 @@ from evento.models import Petiano, GDT
 
 admin.site.site_header = 'PET-UFSCar'
 
+'''
 def confirma_pagamento(modeladmin, request, queryset):
     for petiano in queryset:
         petiano.pagou = True
@@ -10,6 +11,7 @@ def confirma_pagamento(modeladmin, request, queryset):
 
 
 confirma_pagamento.short_description = 'Confirma Pagamento'
+'''
 
 
 def credencia(modeladmin, request, queryset):
@@ -21,6 +23,7 @@ def credencia(modeladmin, request, queryset):
 credencia.short_description = 'Credenciar petiano(s)'
 
 
+'''
 def confirma_e_credencia(modeladmin, request, queryset):
     for petiano in queryset:
         petiano.credenciado = True
@@ -28,6 +31,7 @@ def confirma_e_credencia(modeladmin, request, queryset):
         petiano.save()
 
 confirma_e_credencia.short_description = 'Confirmar pagamento e credenciar petiano(s)'
+'''
 
 
 @admin.register(GDT)
@@ -36,7 +40,14 @@ class GDTAdmin(admin.ModelAdmin):
 
 @admin.register(Petiano)
 class PetianoAdmin(admin.ModelAdmin):
+    '''
     list_display = ('nome', 'pet','gdt','pagou', 'credenciado') #Coloquei o gdt
     list_filter = ('pet', 'pagou', 'credenciado', 'restricao_alimentar')
     search_fields = ['nome']
     actions = [confirma_pagamento, credencia, confirma_e_credencia]
+    '''
+
+    list_display = ('nome', 'pet','gdt', 'credenciado') #Coloquei o gdt
+    list_filter = ('pet', 'credenciado')
+    search_fields = ['nome']
+    actions = [credencia]

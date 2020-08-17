@@ -32,15 +32,15 @@ class Petiano(models.Model):
     nome = models.CharField(max_length=255, null=False, default='')
     email = models.CharField(max_length=255, unique=True, default='')
     telefone = models.CharField(max_length=255, unique=False, null=True)
-    restricao_alimentar = models.CharField(
+    '''restricao_alimentar = models.CharField(
         max_length=255,
         unique=False,
         default='Nenhuma',
         null=True,
-        choices=TIPOS)
+        choices=TIPOS)'''
     pet = models.CharField(max_length=255, null=False, default='')
     credenciado = models.BooleanField(default=False)
-    pagou = models.BooleanField(default=False)
+    #pagou = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['pet']
