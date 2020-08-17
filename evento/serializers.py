@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from interpets2019.models import Petiano
+from evento.models import Petiano
 
 
 class PetianoSerializer(serializers.HyperlinkedModelSerializer):

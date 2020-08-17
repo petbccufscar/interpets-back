@@ -1,8 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from interpets2019.models import Petiano
-from interpets2019.serializers import PetianoSerializer
+from evento.models import Petiano
+from evento.serializers import PetianoSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):

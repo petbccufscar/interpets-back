@@ -1,7 +1,7 @@
 from django.contrib import admin
-from interpets2019.models import Petiano, GDT
+from evento.models import Petiano, GDT
 
-admin.site.site_header = 'Interpets 2019'
+admin.site.site_header = 'PET-UFSCar'
 
 def confirma_pagamento(modeladmin, request, queryset):
     for petiano in queryset:

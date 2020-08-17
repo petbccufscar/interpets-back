@@ -5,6 +5,6 @@ class SuitConfig(DjangoSuitConfig):
     layout = 'horizontal'
 
 
-class Interpets2019Config(AppConfig):
-    name = 'interpets2019'
+class eventoConfig(AppConfig):
+    name = 'evento'
 

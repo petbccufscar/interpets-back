@@ -35,14 +35,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'interpets2019.apps.SuitConfig',
+    'evento.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'interpets2019',
+    'evento',
     'rest_framework',
     'corsheaders'
 ]

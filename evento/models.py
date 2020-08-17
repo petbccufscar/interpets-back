@@ -36,6 +36,7 @@ class Petiano(models.Model):
         max_length=255,
         unique=False,
         default='Nenhuma',
+        null=True,
         choices=TIPOS)
     pet = models.CharField(max_length=255, null=False, default='')
     credenciado = models.BooleanField(default=False)
