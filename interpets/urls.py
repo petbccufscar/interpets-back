@@ -9,6 +9,6 @@ router.register(r'petiano', views.PetianoViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api/admin/', admin.site.urls),
+    path('petufscar/api/', include(router.urls)),
+    path('petufscar/api/admin/', admin.site.urls),
 ]
