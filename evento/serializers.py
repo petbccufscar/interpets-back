@@ -1,9 +1,8 @@
 from rest_framework import serializers
 from evento.models import *
 
-
-class PetianoSerializer(serializers.HyperlinkedModelSerializer):
-    gdt = serializers.StringRelatedField()
+class PetianoSerializer(serializers.ModelSerializer):
+    gdt = serializers.PrimaryKeyRelatedField(queryset=GDT.objects.all())
 
     class Meta:
         model = Petiano
