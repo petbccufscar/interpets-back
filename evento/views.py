@@ -12,22 +12,21 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
 
 
 class PetianoViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
+    
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     queryset = Petiano.objects.all()
-    serializer_class = PetianoSerializer
+    serializer_class = PetianoSaveSerializer
 
     def list(self, request, ** kwargs):
         try:
             queryset = Petiano.objects.get(email=request.query_params['email'])
-            serializer = PetianoSerializer(queryset, many=False)
+            serializer = PetianoCheckSerializer(queryset, many=False)
             return Response(serializer.data)
         except:
-            return Response({'error': 'usuário não cadastrado'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Usuário não cadastrado'}, status=status.HTTP_404_NOT_FOUND)
 
 class GDTViewSet(viewsets.ModelViewSet):
+
     def list(self, request, ** kwargs):
         try:
             queryset = GDT.objects.all()
@@ -37,6 +36,7 @@ class GDTViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Não há GDTs cadastrados'}, status=status.HTTP_404_NOT_FOUND)
 
 class GDTDisponivelViewSet(viewsets.ModelViewSet):
+
     def list(self, request, ** kwargs):
         try:
             queryset = GDT.objects.filter(quantidade_vagas__gt=0)
