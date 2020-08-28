@@ -2,7 +2,8 @@ from rest_framework import serializers
 from evento.models import *
 
 class PetianoSaveSerializer(serializers.ModelSerializer):
-    gdt = serializers.PrimaryKeyRelatedField(queryset=GDT.objects.all())
+    gdt = serializers.PrimaryKeyRelatedField(queryset=GDT.objects.all(), allow_null=True)
+    telefone = serializers.CharField(allow_blank=True, allow_null=True)
 
     class Meta:
         model = Petiano
