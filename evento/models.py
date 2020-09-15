@@ -15,6 +15,7 @@ class GDT(models.Model):
     nome = models.CharField(max_length=255, default='', null=True, blank=False)
     quantidade_vagas = models.IntegerField(null=True, blank=False)
     descricao = models.TextField(null=True, blank=False)
+    link = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         ordering = ['nome']
