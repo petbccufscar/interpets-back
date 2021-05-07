@@ -145,7 +145,7 @@ CORS_ALLOW_HEADERS = (
 )
 
 SUIT_CONFIG = {
-    'ADMIN_NAME': 'Pré Sudeste 2021',
+    'ADMIN_NAME': 'Interpets',
 }
 
 # Internationalization
