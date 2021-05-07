@@ -1,10 +1,14 @@
 from django.db import models
 
-TIPOS = [('Vegetariano', 'Vegetariano'),
-         ('Vegano', 'Vegano'), ('Nenhuma', 'Nenhuma')]
+TIPOS_ACESSIBILIDADE = [('Sim', 'Sim'),
+         ('Não', 'Não')]
 
 """
-tipos_gdt = [('Nenhum', 'Nenhum'),
+TIPOS_COFFEE = [('Nenhuma', 'Nenhuma'),
+                ('Vegetariano', 'Vegetariano'),
+                ('Vegano', 'Vegano')]
+
+TIPOS_GDT = [('Nenhum', 'Nenhum'),
 			('Estrutura Horizontal', 'Estrutura Horizontal'),
 			('Gestão Interna', 'Gestão Interna'),
 			('Desempenho acadêmico', 'Desempenho acadêmico')]
@@ -34,15 +38,21 @@ class Petiano(models.Model):
     nome = models.CharField(max_length=255, null=False, default='')
     email = models.CharField(max_length=255, unique=True, default='')
     telefone = models.CharField(max_length=255, unique=False, null=True)
-    '''restricao_alimentar = models.CharField(
+    acessibilidade = models.CharField(max_length=255, unique=False, default='Não', null=True, choices=TIPOS_ACESSIBILIDADE)
+    descricao_acessibilidade = models.CharField(max_length=255, unique=False, default='')
+    pet = models.CharField(max_length=255, null=False, default='')
+    credenciado = models.BooleanField(default=False)
+    
+    '''
+    pagou = models.BooleanField(default=False)
+
+    restricao_alimentar = models.CharField(
         max_length=255,
         unique=False,
         default='Nenhuma',
         null=True,
-        choices=TIPOS)'''
-    pet = models.CharField(max_length=255, null=False, default='')
-    credenciado = models.BooleanField(default=False)
-    #pagou = models.BooleanField(default=False)
+        choices=TIPOS_COFFEE)
+    '''
 
     class Meta:
         ordering = ['pet']

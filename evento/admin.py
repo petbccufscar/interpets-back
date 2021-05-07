@@ -41,13 +41,13 @@ class GDTAdmin(admin.ModelAdmin):
 @admin.register(Petiano)
 class PetianoAdmin(admin.ModelAdmin):
     '''
-    list_display = ('nome', 'pet','gdt','pagou', 'credenciado') #Coloquei o gdt
+    list_display = ('nome', 'pet','gdt','pagou', 'credenciado')
     list_filter = ('pet', 'pagou', 'credenciado', 'restricao_alimentar')
     search_fields = ['nome']
     actions = [confirma_pagamento, credencia, confirma_e_credencia]
     '''
 
-    list_display = ('nome', 'pet','gdt', 'credenciado') #Coloquei o gdt
-    list_filter = ('pet', 'credenciado')
+    list_display = ('nome', 'pet','gdt', 'acessibilidade', 'credenciado')
+    list_filter = ('pet', 'credenciado', 'acessibilidade')
     search_fields = ['nome']
     actions = [credencia]
