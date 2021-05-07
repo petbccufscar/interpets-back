@@ -7,12 +7,12 @@ class PetianoSaveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Petiano
-        fields = ('nome', 'email', 'telefone', 'pet', 'gdt')
+        fields = ('nome', 'email', 'telefone', 'acessibilidade', 'pet', 'des_aces', 'gdt')
 
 class PetianoCheckSerializer(serializers.ModelSerializer):
     class Meta:
         model = Petiano
-        fields = ('nome', 'email', 'telefone', 'pet', 'gdt')
+        fields = ('nome', 'email', 'telefone', 'acessibilidade', 'pet', 'des_aces', 'gdt')
         depth = 1
 
 class GDTSerializer(serializers.HyperlinkedModelSerializer):

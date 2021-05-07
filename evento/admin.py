@@ -47,7 +47,7 @@ class PetianoAdmin(admin.ModelAdmin):
     actions = [confirma_pagamento, credencia, confirma_e_credencia]
     '''
 
-    list_display = ('nome', 'pet','gdt', 'credenciado') #Coloquei o gdt
+    list_display = ('nome', 'pet','gdt', 'acessibilidade' 'credenciado') #Coloquei o gdt
     list_filter = ('pet', 'credenciado')
     search_fields = ['nome']
     actions = [credencia]
