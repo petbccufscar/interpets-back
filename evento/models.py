@@ -36,7 +36,7 @@ class Petiano(models.Model):
     telefone = models.CharField(max_length=255, unique=False, null=True)
     acessibilidade = models.CharField(max_length=255, unique=False, default='Não', null=True, choices=TIPOS)
     pet = models.CharField(max_length=255, null=False, default='')
-    des_acess = models.CharField(max_length=255, null=False, default='')
+    des_acess = models.CharField(max_length=255, unique=False, default='')
     credenciado = models.BooleanField(default=False)
     #pagou = models.BooleanField(default=False)
 
