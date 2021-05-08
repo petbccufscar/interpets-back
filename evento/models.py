@@ -39,7 +39,7 @@ class Petiano(models.Model):
     email = models.CharField(max_length=255, unique=True, default='')
     telefone = models.CharField(max_length=255, unique=False, null=True)
     acessibilidade = models.CharField(max_length=255, unique=False, default='Não', null=True, choices=TIPOS_ACESSIBILIDADE)
-    descricao_acessibilidade = models.CharField(max_length=255, unique=False, default='')
+    descricao_acessibilidade = models.CharField(max_length=255, unique=False, null=True, default='')
     pet = models.CharField(max_length=255, null=False, default='')
     credenciado = models.BooleanField(default=False)
     
